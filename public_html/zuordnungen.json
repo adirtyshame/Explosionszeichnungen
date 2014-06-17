@@ -1,1 +1,38 @@
-[{"name":"Minarelli liegend","kurz":"MA","bild":"images/Explosionszeichnung_final.gif","zuordnungen":[{"x":1200,"y":32,"w":60,"h":35,"fill":"rgba(2,165,165,0.7)","baugruppe":"C","einzelteil":"01","ersatzteile":["123","456"],"tuningteile":["abc","def"]},{"x":1196,"y":243,"w":59,"h":31,"fill":"rgba(2,165,165,0.7)","baugruppe":"C","einzelteil":"02","ersatzteile":["123","456"],"tuningteile":["abc","def"]},{"x":1349,"y":24,"w":63,"h":31,"fill":"rgba(2,165,165,0.7)","baugruppe":"C","einzelteil":"03","ersatzteile":["123","456"],"tuningteile":["abc","def"]},{"x":1433,"y":59,"w":50,"h":28,"fill":"rgba(2,165,165,0.7)","baugruppe":"C","einzelteil":"04","ersatzteile":["123","456"],"tuningteile":["abc","def"]}]},{"name":"Minarelli stehend","kurz":"MS","bild":"images/Explosionszeichnung_final_ohne.gif","zuordnungen":[{"x":1200,"y":32,"w":60,"h":35,"fill":"rgba(2,165,165,0.7)","baugruppe":"C","einzelteil":"01","ersatzteile":["123","456"],"tuningteile":["abc","def"]},{"x":1196,"y":443,"w":59,"h":31,"fill":"rgba(2,165,165,0.7)","baugruppe":"C","einzelteil":"02","ersatzteile":["123","456"],"tuningteile":["abc","def"]},{"x":1349,"y":24,"w":63,"h":31,"fill":"rgba(2,165,165,0.7)","baugruppe":"C","einzelteil":"03","ersatzteile":["123","456"],"tuningteile":["abc","def"]},{"x":1433,"y":59,"w":50,"h":28,"fill":"rgba(2,165,165,0.7)","baugruppe":"C","einzelteil":"04","ersatzteile":["123","456"],"tuningteile":["abc","def"]}]}]
+[{
+        "bild": "images/Explosionszeichnung_final.gif",
+        "name":"Minarelli liegend",
+        "kurz":"MA",
+        "zuordnungen": [{
+                "x": 1200,
+                "y": 32,
+                "w": 60,
+                "h": 35,
+                "baugruppe": "C",
+                "einzelteil": "01"
+            }, {
+                "x": 1196,
+                "y": 243,
+                "w": 59,
+                "h": 31,
+                "baugruppe": "C",
+                "einzelteil": "02"
+            }]},{
+        "bild": "images/Explosionszeichnung_final_2.gif",
+        "name":"Minarelli stehend",
+        "kurz":"MS",
+        "zuordnungen": [{
+                "x": 1200,
+                "y": 32,
+                "w": 60,
+                "h": 35,
+                "baugruppe": "C",
+                "einzelteil": "01"
+            }, {
+                "x": 1196,
+                "y": 243,
+                "w": 59,
+                "h": 31,
+                "baugruppe": "C",
+                "einzelteil": "02"
+            }]}
+    ]

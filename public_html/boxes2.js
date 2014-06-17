@@ -42,7 +42,6 @@
 // The node (if any) being selected.
 // If in the future we want to select multiple objects, this will get turned into an array
     var mySel = null;
-    var myMotor = null;
 
 // The selection color and width. Right now we have a red selection with a small width
     var mySelColor = '#CC0000';
@@ -195,11 +194,7 @@
     function init2() {
         canvas = document.getElementById('canvas2');
         background = new Image();
-        if (myMotor == null) {
-            background.src = "000000-0.png";
-        } else {
-            background.src = myMotor.bild;
-        }
+        background.src = "000000-0.png";
         background.onload = function() {
             canvas.width = background.width;
             canvas.height = background.height;
@@ -261,7 +256,6 @@
         $('#gruppe').change(function() {
             var value = $(this).val();
             mySel = boxes2[value];
-            reloadParts(mySel);
             invalidate();
 
         });
@@ -269,10 +263,18 @@
             var i = $(this).val();
             myMotor = motoren[i];
             boxes2.length = 0;
+            background = new Image();
+            background.src = motoren[i].bild;
+            background.onload = function() {
+                canvas.width = background.width;
+                canvas.height = background.height;
+                invalidate();
+            };
             motoren[i].zuordnungen.forEach(function(value) {
                 addRect(value.motor, value.baugruppe, value.einzelteil, value.x, value.y, value.w, value.h, value.fill);
             });
             reloadGruppe();
+            invalidate();
         });
 
         $('#addGruppe').click(function() {
@@ -283,36 +285,6 @@
             addRect(parts[0], parts[1], parts[2], 20, 20, 64, 32, 'rgba(2,165,165,0.7)');
             $('#gruppeText').val('');
             reloadGruppe();
-        });
-
-        $('#addErsatz').click(function() {
-            if ($('#ersatzText').val() == '' || mySel == null) {
-                return;
-            }
-            mySel.ersatzteile.push($('#ersatzText').val());
-            $('#ersatzText').val('');
-            reloadParts(mySel);
-        });
-        $('#removeErsatz').click(function() {
-            $('#ersatz option:selected').each(function() {
-                mySel.ersatzteile.splice($.inArray($(this).val(), mySel.ersatzteile), 1);
-            });
-            reloadParts(mySel);
-        });
-
-        $('#addTuning').click(function() {
-            if ($('#tuningText').val() == '' || mySel == null) {
-                return;
-            }
-            mySel.tuningteile.push($('#tuningText').val());
-            $('#tuningText').val('');
-            reloadParts(mySel);
-        });
-        $('#removeTuning').click(function() {
-            $('#tuning option:selected').each(function() {
-                mySel.tuningteile.splice($.inArray($(this).val(), mySel.tuningteile), 1);
-            });
-            reloadParts(mySel);
         });
 
         $('#export').click(function() {
@@ -577,24 +549,8 @@
         my = e.pageY - offsetY;
     }
 
-    function reloadParts(box) {
-        if (box == null) {
-            return;
-        }
-        console.log(box);
-        document.myform.master2.options.length = 0;
-        var ersatz = document.myform.master2;
-        for (i = 0; i < box.ersatzteile.length; i++) {
-            ersatz.options[ersatz.options.length] = new Option(box.ersatzteile[i], i, false, false);
-        }
-        document.myform.master3.options.length = 0;
-        var tuning = document.myform.master3;
-        for (i = 0; i < box.tuningteile.length; i++) {
-            tuning.options[tuning.options.length] = new Option(box.tuningteile[i], i, false, false);
-        }
-    }
-
     function reloadGruppe() {
+        console.log("reloadGruppe");
         document.myform.master1.options.length = 0;
         var gruppe = document.myform.master1;
         for (i = 0; i < boxes2.length; i++) {
@@ -603,6 +559,7 @@
     }
 
     function reloadMotoren() {
+        console.log("reloadMotoren");
         document.myform.master0.options.length = 0;
         var motor = document.myform.master0;
         for (i = 0; i < motoren.length; i++) {
